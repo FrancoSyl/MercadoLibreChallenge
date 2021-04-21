@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MercadoLibre Challenge</string>
+    <string name="loading_timeout">Algo no funciona como lo esperabamos, por favor vuelve a intentarlo</string>
+    <string name="search_in_mercado_libre">Buscar en Mercado Libre</string>
 </resources>

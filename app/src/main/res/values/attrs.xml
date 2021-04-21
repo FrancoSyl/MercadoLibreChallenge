@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ToolbarView">
+        <attr name="toolbar_show_iv_menu" format="boolean" />
+        <attr name="toolbar_show_tv_product" format="boolean" />
+        <attr name="toolbar_show_et_search" format="boolean" />
+        <attr name="toolbar_show_iv_like" format="boolean" />
+        <attr name="toolbar_show_iv_search" format="boolean" />
+        <attr name="toolbar_show_iv_cart" format="boolean" />
+    </declare-styleable>
+</resources>
