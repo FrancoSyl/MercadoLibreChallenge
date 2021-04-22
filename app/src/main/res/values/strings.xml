@@ -5,4 +5,6 @@
     <string name="product">Producto</string>
     <string name="no_products_found">No encontramos publicaciones</string>
     <string name="check_that_the_word_is_well_written">Revisa que la palabra esté bien escrita</string>
+    <string name="free_shipping">Envío gratis</string>
+    <string name="price">$ %s</string>
 </resources>

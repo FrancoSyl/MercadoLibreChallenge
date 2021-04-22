@@ -32,39 +32,60 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="8dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:background="@color/red"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toTopOf="@+id/ivPhoto"
+                    app:layout_constraintEnd_toStartOf="@+id/ivLike"
                     app:layout_constraintStart_toEndOf="@id/ivPhoto"
-                    tools:text="Cinta de correr electrica Femmto Runner 10k 22V negra"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="@+id/ivPhoto"
+                    tools:text="Cinta de correr electrica Femmto Runner 10k 22V negra" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_like_blue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
                     android:textColor="@color/black"
-                    android:layout_marginTop="4dp"
                     android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
                     app:layout_constraintTop_toBottomOf="@+id/tvName"
-                    app:layout_constraintStart_toEndOf="@id/ivPhoto"
-                    tools:text="$ 40.999"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    tools:text="$ 40.999" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFreeDelivery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/free_shipping"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ivLike"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
