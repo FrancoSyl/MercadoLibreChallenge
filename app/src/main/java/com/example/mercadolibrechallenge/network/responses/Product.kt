@@ -8,5 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class Product (
     val id: String? = AppConstants.EMPTY_STRING,
     val title: String? = AppConstants.EMPTY_STRING,
-    val price: Float? = 0F
+    val price: Float? = 0F,
+    val thumbnail: String? = AppConstants.EMPTY_STRING
 ) : Parcelable

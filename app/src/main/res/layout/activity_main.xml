@@ -12,22 +12,67 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:toolbar_show_iv_menu="true"
             app:toolbar_show_et_search="true"
-            app:toolbar_show_iv_cart="true"/>
+            app:toolbar_show_iv_cart="true"
+            app:toolbar_show_iv_menu="true" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerEmptyList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/ic_search_back_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNoProductFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_products_found"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivSearch" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_that_the_word_is_well_written"
+                android:textAlignment="center"
+                android:layout_marginTop="8dp"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNoProductFound" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProducts"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:clipToPadding="false"
+            android:orientation="vertical"
             android:paddingBottom="32dp"
-            tools:itemCount="16"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/list_item_product"/>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:itemCount="0"
+            tools:listitem="@layout/list_item_product" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

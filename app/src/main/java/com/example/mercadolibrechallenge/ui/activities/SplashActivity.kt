@@ -36,10 +36,8 @@ class SplashActivity : BaseActivity() {
                 response: Response<ResponseSearch>
             ) {
                 response.body()?.let {
-                    if (it.results != null){
-                        it.results.forEach { product ->
-                            productsList.add(product)
-                        }
+                    it.results.forEach { product ->
+                        productsList.add(product)
                     }
                     ObjectsController.productsList = productsList
                     finish()

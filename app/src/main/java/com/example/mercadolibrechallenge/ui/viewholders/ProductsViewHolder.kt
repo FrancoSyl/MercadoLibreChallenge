@@ -10,11 +10,11 @@ class ProductsViewHolder(private var binding: ListItemProductBinding) : Recycler
         binding.apply {
             tvName.text = product.title
             tvPrice.text = "$ ${product.price?.toInt()}"
+//            ivPhoto.setImageBitmap(convertImage(product.thumbnail))
 
             containerProduct.setOnClickListener {
                 onProductClick(product)
             }
         }
     }
-
 }
