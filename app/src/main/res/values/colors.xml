@@ -9,11 +9,13 @@
     <color name="green">#4CAF50</color>
     <color name="red">#F44336</color>
     <color name="orange"> #E08F4C </color>
-
     <color name="blue">#1313DD</color>
     <color name="blue_two">#3F8CFF</color>
+    <color name="blue_three">#3483FA</color>
+    <color name="light_blue">#E4EDFC</color>
     <color name="pink">#FE9184</color>
     <color name="grey">#B2B2B2</color>
+    <color name="grey_two">#EBEBEB</color>
     <color name="yellow">#FFDB15</color>
     <color name="yellow_two">#FEDD1C</color>
 

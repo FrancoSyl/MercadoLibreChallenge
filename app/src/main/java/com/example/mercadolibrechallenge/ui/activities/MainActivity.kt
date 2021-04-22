@@ -44,7 +44,12 @@ class MainActivity : BaseActivity() {
                 etSearch.setOnEditorActionListener { v, actionId, _ ->
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
                         containerEmptyList.isVisible = false
-                        searchProduct(v.text.toString())
+                        if (v.text.isEmpty()){
+                            productsAdapter.swapData(ObjectsController.productsList)
+                            productsAdapter.notifyDataSetChanged()
+                        } else {
+                            searchProduct(v.text.toString())
+                        }
                     }
                     false
                 }

@@ -9,5 +9,8 @@ data class Product (
     val id: String? = AppConstants.EMPTY_STRING,
     val title: String? = AppConstants.EMPTY_STRING,
     val price: Float? = 0F,
-    val thumbnail: String? = AppConstants.EMPTY_STRING
+    val thumbnail: String? = AppConstants.EMPTY_STRING,
+    val condition: String? = AppConstants.EMPTY_STRING,
+    val sold_quantity: Int? = 0,
+    val available_quantity: Int? = 0
 ) : Parcelable

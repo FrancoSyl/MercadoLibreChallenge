@@ -7,4 +7,10 @@
     <string name="check_that_the_word_is_well_written">Revisa que la palabra esté bien escrita</string>
     <string name="free_shipping">Envío gratis</string>
     <string name="price">$ %s</string>
+    <string name="buy_now">Comprar ahora</string>
+    <string name="add_to_cart">Agregar al carrito</string>
+    <string name="state_and_sold">%s | %s %s</string>
+    <string name="see_payment_methods">Ver los medios de pago</string>
+    <string name="quantity">Cantidad: %s</string>
+    <string name="availables">(%s disponibles)</string>
 </resources>

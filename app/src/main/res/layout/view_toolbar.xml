@@ -62,7 +62,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/etSearch_textSize"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ivCart"
                     app:layout_constraintStart_toEndOf="@id/ivMenu"

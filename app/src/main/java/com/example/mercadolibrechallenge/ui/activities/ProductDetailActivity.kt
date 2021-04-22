@@ -7,6 +7,8 @@ import com.example.mercadolibrechallenge.R
 import com.example.mercadolibrechallenge.databinding.ActivityProductDetailBinding
 import com.example.mercadolibrechallenge.di.base.BaseActivity
 import com.example.mercadolibrechallenge.network.responses.Product
+import com.example.mercadolibrechallenge.utils.AppConstants
+import com.squareup.picasso.Picasso
 import org.jetbrains.anko.startActivity
 
 class ProductDetailActivity : BaseActivity() {
@@ -33,7 +35,29 @@ class ProductDetailActivity : BaseActivity() {
         }
 
         binding.apply {
+            tvStateAndSold.text = getString(R.string.state_and_sold, productCondition(product.condition), product.sold_quantity.toString(), productSoldQuantity(product.sold_quantity))
             tvName.text = product.title
+            Picasso.with(this@ProductDetailActivity).load(product.thumbnail).fit().into(ivThumbnail)
+            tvPrice.text = getString(R.string.price, product.price.toString())
+
+            tvQuantity.text = getString(R.string.quantity, "1")
+            tvAvailable.text = getString(R.string.availables, product.available_quantity.toString())
         }
     }
+
+    private fun productCondition(condition: String?): String {
+        if (condition == "new"){
+            return AppConstants.NEW
+        }
+        return AppConstants.USED
+    }
+
+    private fun productSoldQuantity(itemSold: Int?): String {
+        if (itemSold == 1){
+            return "vendido"
+        }
+        return "vendidos"
+    }
+
+
 }

@@ -3,32 +3,161 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <com.example.mercadolibrechallenge.ui.customviews.ToolbarView
-            android:id="@+id/toolbar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:toolbar_show_iv_menu="true"
-            app:toolbar_show_iv_like="true"
-            app:toolbar_show_iv_search="true"
-            app:toolbar_show_iv_cart="true"
-            app:toolbar_show_tv_product="true"/>
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Detalle del producto"/>
+            <com.example.mercadolibrechallenge.ui.customviews.ToolbarView
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:toolbar_show_iv_cart="true"
+                app:toolbar_show_iv_like="true"
+                app:toolbar_show_iv_menu="true"
+                app:toolbar_show_iv_search="true"
+                app:toolbar_show_tv_product="true" />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical3P"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.03" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical97P"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStateAndSold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical3P"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                tools:text="Nuevo | 68 vendidos" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical3P"
+                app:layout_constraintTop_toBottomOf="@id/tvStateAndSold"
+                tools:text="Camisa Hombre Entallada Lisa Cuello Italiano Varios Colores!" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivThumbnail"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical3P"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                tools:background="@color/red" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical3P"
+                app:layout_constraintTop_toBottomOf="@id/ivThumbnail"
+                tools:text="$ 1599" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPaymentMethods"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/see_payment_methods"
+                android:textColor="@color/blue_two"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical3P"
+                app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_grey"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical3P"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintTop_toBottomOf="@id/tvPaymentMethods">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvQuantity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:layout_margin="12dp"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="Cantidad: 1"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAvailable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_margin="12dp"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvQuantity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="(2700 disponibles)"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBuyNow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/bg_blue"
+                android:text="@string/buy_now"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical3P"
+                app:layout_constraintTop_toBottomOf="@id/containerQuantity" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddToCart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/bg_light_blue"
+                android:text="@string/add_to_cart"
+                android:textColor="@color/blue_three"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical3P"
+                app:layout_constraintTop_toBottomOf="@id/btnBuyNow" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>
