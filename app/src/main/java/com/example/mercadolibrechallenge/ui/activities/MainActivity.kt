@@ -9,6 +9,7 @@ import com.example.mercadolibrechallenge.databinding.ActivityMainBinding
 import com.example.mercadolibrechallenge.di.base.BaseActivity
 import com.example.mercadolibrechallenge.ui.adapters.ProductsAdapter
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity() {
 
@@ -26,7 +27,9 @@ class MainActivity : BaseActivity() {
         )
 
         binding.apply {
-            productsAdapter = ProductsAdapter()
+            productsAdapter = ProductsAdapter(onProductClick = { product ->
+                ProductDetailActivity.start(this@MainActivity, product = product)
+            })
             productsAdapter.swapData(ObjectsController.productsList)
             rvProducts.adapter = productsAdapter
         }

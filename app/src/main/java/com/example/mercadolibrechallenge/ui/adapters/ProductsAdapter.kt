@@ -9,7 +9,7 @@ import com.example.mercadolibrechallenge.databinding.ListItemProductBinding
 import com.example.mercadolibrechallenge.network.responses.Product
 import com.example.mercadolibrechallenge.ui.viewholders.ProductsViewHolder
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsViewHolder>() {
+class ProductsAdapter (private val onProductClick: (product: Product) -> Unit) : RecyclerView.Adapter<ProductsViewHolder>() {
 
     private var productsList = ArrayList<Product>()
 
@@ -26,7 +26,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsViewHolder>() {
     override fun getItemCount(): Int = productsList.size
 
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
-        holder.bind(product = productsList[position])
+        holder.bind(product = productsList[position], onProductClick = { product ->
+            onProductClick(product)
+        })
     }
 
     fun swapData(searchList: ArrayList<Product>) {

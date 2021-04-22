@@ -7,14 +7,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.example.mercadolibrechallenge.ui.customviews.ToolbarView
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbar_show_iv_menu="true"
+            app:toolbar_show_iv_like="true"
+            app:toolbar_show_iv_search="true"
+            app:toolbar_show_iv_cart="true"
+            app:toolbar_show_tv_product="true"/>
+
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Detalle del producto"/>
+            tools:text="Detalle del producto"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

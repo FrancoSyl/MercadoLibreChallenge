@@ -61,11 +61,11 @@ class ToolbarView : ConstraintLayout {
             View.GONE
         }
 
-//        etSearch?.visibility = if (showEtProduct) {
-//            View.VISIBLE
-//        } else {
-//            View.GONE
-//        }
+        tvProduct?.visibility = if (showTvProduct) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
 
         etSearch?.visibility = if (showEtProduct) {
             View.VISIBLE
