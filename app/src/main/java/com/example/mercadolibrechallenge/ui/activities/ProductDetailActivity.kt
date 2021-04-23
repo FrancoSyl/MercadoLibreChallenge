@@ -1,22 +1,26 @@
 package com.example.mercadolibrechallenge.ui.activities
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.AbsListView
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mercadolibrechallenge.R
 import com.example.mercadolibrechallenge.databinding.ActivityProductDetailBinding
 import com.example.mercadolibrechallenge.di.base.BaseActivity
 import com.example.mercadolibrechallenge.network.responses.Product
+import com.example.mercadolibrechallenge.ui.adapters.PicturesAdapter
 import com.example.mercadolibrechallenge.utils.AppConstants
-import com.squareup.picasso.Picasso
 import org.jetbrains.anko.startActivity
 
 class ProductDetailActivity : BaseActivity() {
 
     private lateinit var binding: ActivityProductDetailBinding
     private lateinit var product: Product
+    private lateinit var picturesAdapter: PicturesAdapter
+    private var scrollPosition = 0
+    private var scrollIncrease = false
+    private var currentPosition = 1
 
     companion object {
         private const val PRODUCT = "product"
@@ -39,6 +43,10 @@ class ProductDetailActivity : BaseActivity() {
         }
 
         binding.apply {
+            picturesAdapter = PicturesAdapter()
+            picturesAdapter.swapData(product.pictures)
+            rvPictures.adapter = picturesAdapter
+
             tvStateAndSold.text = getString(
                 R.string.state_and_sold,
                 productCondition(product.condition),
@@ -48,23 +56,43 @@ class ProductDetailActivity : BaseActivity() {
                 )
             )
             tvName.text = product.title
-//            Picasso.with(this@ProductDetailActivity).load(product.pictures[0].url).fit().into(ivThumbnail)
+            tvCurrentItem.text = getString(R.string.current_item_count, currentPosition.toString(), product.pictures.size.toString())
             tvPrice.text = getString(R.string.price, product.price.toString())
 
             tvQuantity.text = getString(R.string.quantity, "1")
             tvAvailable.text = getString(R.string.availables, product.available_quantity.toString())
 
-            Picasso.with(this@ProductDetailActivity)
-                .load(product.pictures[0].url)
-                .into(object: com.squareup.picasso.Target {
-                    override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
+            rvPictures.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    scrollIncrease = dx > 0
+                }
 
-                    override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                        ivThumbnail.setImageBitmap(bitmap)
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
+                        val maxItem: Int = rvPictures.adapter?.itemCount?.minus(1)!!
+                        if (scrollIncrease) {
+                            currentPosition += 1
+                            scrollPosition += 1
+                            if (scrollPosition > maxItem) {
+                                currentPosition = maxItem + 1
+                                scrollPosition = maxItem
+                            }
+                        } else {
+                            currentPosition -= 1
+                            scrollPosition -= 1
+                            if (scrollPosition < 0) {
+                                currentPosition = 1
+                                scrollPosition = 0
+                            }
+                        }
+                        rvPictures.smoothScrollToPosition(scrollPosition)
+                        tvCurrentItem.text = getString(R.string.current_item_count, currentPosition.toString(), product.pictures.size.toString())
                     }
+                }
+            })
 
-                    override fun onBitmapFailed(errorDrawable: Drawable?) {}
-                })
         }
     }
 

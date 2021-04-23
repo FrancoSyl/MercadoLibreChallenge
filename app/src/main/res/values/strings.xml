@@ -13,4 +13,5 @@
     <string name="see_payment_methods">Ver los medios de pago</string>
     <string name="quantity">Cantidad: %s</string>
     <string name="availables">(%s disponibles)</string>
+    <string name="current_item_count">%s / %s</string>
 </resources>

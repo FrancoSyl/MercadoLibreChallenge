@@ -58,17 +58,29 @@
                 app:layout_constraintTop_toBottomOf="@id/tvStateAndSold"
                 tools:text="Camisa Hombre Entallada Lisa Cuello Italiano Varios Colores!" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivThumbnail"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCurrentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:minHeight="100dp"
-                android:minWidth="100dp"
-                app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/guidelineVertical3P"
-                app:layout_constraintTop_toBottomOf="@id/tvName"
-                tools:background="@color/red" />
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                tools:text="1 / 8" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPictures"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingTop="12dp"
+                android:paddingBottom="32dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentItem"
+                tools:itemCount="6"
+                tools:listitem="@layout/list_item_picture" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPrice"
@@ -79,7 +91,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
                 app:layout_constraintStart_toStartOf="@+id/guidelineVertical3P"
-                app:layout_constraintTop_toBottomOf="@id/ivThumbnail"
+                app:layout_constraintTop_toBottomOf="@id/rvPictures"
                 tools:text="$ 1599" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -100,34 +112,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_grey"
-                app:layout_constraintStart_toStartOf="@id/guidelineVertical3P"
                 app:layout_constraintEnd_toEndOf="@id/guidelineVertical97P"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical3P"
                 app:layout_constraintTop_toBottomOf="@id/tvPaymentMethods">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvQuantity"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/black"
-                    android:layout_margin="12dp"
                     android:textSize="16sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="Cantidad: 1"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Cantidad: 1" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvAvailable"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_margin="12dp"
+                    android:layout_marginTop="8dp"
                     android:textSize="16sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvQuantity"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="(2700 disponibles)"/>
+                    app:layout_constraintStart_toEndOf="@+id/tvQuantity"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="(2700 disponibles)" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
