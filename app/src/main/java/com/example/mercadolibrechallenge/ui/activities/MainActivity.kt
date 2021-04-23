@@ -12,6 +12,7 @@ import com.example.mercadolibrechallenge.di.base.BaseActivity
 import com.example.mercadolibrechallenge.network.ApiService
 import com.example.mercadolibrechallenge.network.ProductsService
 import com.example.mercadolibrechallenge.network.responses.Product
+import com.example.mercadolibrechallenge.network.responses.ResponseProduct
 import com.example.mercadolibrechallenge.network.responses.ResponseSearch
 import com.example.mercadolibrechallenge.ui.adapters.ProductsAdapter
 import com.example.mercadolibrechallenge.utils.AppConstants
@@ -56,7 +57,7 @@ class MainActivity : BaseActivity() {
             }
 
             productsAdapter = ProductsAdapter(onProductClick = { product ->
-                ProductDetailActivity.start(this@MainActivity, product = product)
+                getProduct(product.id.toString())
             })
             productsAdapter.swapData(ObjectsController.productsList)
             rvProducts.adapter = productsAdapter
@@ -83,6 +84,27 @@ class MainActivity : BaseActivity() {
             }
 
             override fun onFailure(call: Call<ResponseSearch>, t: Throwable) {
+                finish()
+                toast("Error: ${t.message}")
+                hideProgress()
+            }
+        })
+    }
+
+    private fun getProduct(productId: String) {
+        showProgress()
+        service.getProductDetail(productId).enqueue(object : Callback<ArrayList<ResponseProduct>> {
+            override fun onResponse(call: Call<ArrayList<ResponseProduct>>, response: Response<ArrayList<ResponseProduct>>) {
+                response.body()?.let {
+                    it[0].let { responseProduct ->
+                        val product = responseProduct.body
+                        hideProgress()
+                        ProductDetailActivity.start(this@MainActivity, product = product)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<ResponseProduct>>, t: Throwable) {
                 finish()
                 toast("Error: ${t.message}")
                 hideProgress()
